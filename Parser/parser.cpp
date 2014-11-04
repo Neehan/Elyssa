@@ -481,7 +481,7 @@ int main()
     map<string,double> knowns;
     string unknown="x",pemp, hmm;
     string val="(x-2)(x+2)^3/(x^3-1)^2+x/(x+3)^2";
-    cout << "Open parse.ini with notepad to change the names/values of variables.You can change them anytime.\n";
+    cout << "Open parser.ini with notepad to change the names/values of variables.You can change them anytime.\n";
     xx:
     cout <<"\nExpression=";
     cin >> val;
