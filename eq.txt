@@ -1,0 +1,12 @@
+v = u+a*t 4 v u a t
+s = (u+v)/2*t 4 s u v t
+s = u*t+1/2*a*t^2 4 s u t a
+v^2 = u^2+2*a*s 4 v u a s
+F = m*a 3 F m a
+m1*u1+m2*u2 = m1*v1+m2*v2 6 m1 m2 u1 u2 v1 v2
+F = G*m1*m2/(d*d) 5 F G m1 m2 d
+W = F*s*costheta 4 W F s costheta
+W = F*x 3 W F x
+W = m*g*h 4 W m g h
+v = u+g*t 4 v u g t
+p = W/t 3 p W t
