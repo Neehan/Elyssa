@@ -63,25 +63,55 @@ Problem: *A car accelerates steadily from rest at 4 m/s^2 for 3s. What is its fi
 *What to find=* `v`
 ####Output
 `12`
-####Multiple Object Mode
 
-#####Sample Problem
+`(N)ew    (Q)uit`
+
+If you press `n`, Elyssa will be ready for the next problem. And if you press `q`, the program will be terminated.
+###Multiple Object Mode
+This time Elyssa will reply, *Number of knowns(for the first object)=* and you have to write the number. And like before, Elyssa will say, `Write them one at a line`. Writing rules are same as previous, but this time you have to write the knowns with a suffixing `1` ie, for mass, write `m1` instead of `m`. 
+
+Similarly write the knowns for the second object, with `2` as suffix.
+
+After that Elyssa will ask if there are any other (algebraic) conditions, for example, like `v1 = v2`. If there are, press `y`, else press `n`.
+
+If you press `y`, Elyssa will ask for the number of such conditions. **Current version supports only one condition.** So press `1` and write down the condition. The format will be:
+
+`LHS <space> = <space> RHS <space>VariablesOfTheEquation (Each separated by a <space>)`
+
+**The current version supports only two varibles. And one variable must be written as a function of other. Here is how it works:**
+
+`v1 = v2+2 v1 v2` //This is valid. `v1`is written as a function of `v2`.
+
+`v1-v2 = 2 v1 v2` //But this is  not. 
+
+When you have written everything correctly, Elyssa will ask `What to find=`. Tell her the quantity's name. The following line should be the result.
+####Sample Problem 1
 *A 10g bullet is fired from a gun. If the recoil velocity is 5m/s and the mass of the gun is 2kg, find the velocity of the bullet.*
 
 ####Input
-*Number of Knowns*=`5`
+*(S)ingle Object  (M)ultiple Object*
+
+`m`
+
+*Number of Knowns (for the first object)=* `2`
 
 *Write them one at a line*
 
 `m1 = 0.01`
 
-`m2 = 2`
-
 `u1 = 0`
+
+*Number of Knowns (for the second object)*=`3`
+
+`m2 = 2`
 
 `u2 = 0`
 
 `v2 = 5`
+
+*Any other conditions?y/n*
+
+`n`
 
 *What to find=* `v1`
 
