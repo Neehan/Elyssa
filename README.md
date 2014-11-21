@@ -22,9 +22,18 @@ Here `u=0`, `a=4m/s^2` and `t=3s` are the **knowns** and `v` is the **unknown**.
 ###Course of events
 After running, the program writes *(S)ingle Object   (M)ultiple Objects* on the console and expects an input from you. Press `s` or `m` to  enable `Single` or `Multiple` object mode, respectively. 
 
-###Single Object Mode
+####Single Object Mode
+After pressing `s`, Elyssa will reply, *Number of knowns=* which is self-explanatory. Give her the number and she will tell you to write down the knowns one at a line. Note all the inputs must be in SI units and the format will be: `Known'sName <space> = <space> NumericValue`
+For example, to input `a=4m/s^2`, write `a = 4`
 
-###Sample Problem
+After that Elyssa will print `What to find=` and you have to write the name of the unknown.
+The very next line should be the answer.:D
+
+#####Sample Problem
+
+####Multiple Object Mode
+
+#####Sample Problem
 *A 10g bullet is fired from a gun. If the recoil velocity is 5m/s and the mass of the gun is 2kg, find the velocity of the bullet.*
 
 ####Input
