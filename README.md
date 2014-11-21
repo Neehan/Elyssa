@@ -10,9 +10,10 @@ Elyssa is a project to make simple program that can solve elementary physics pro
 Well, I do agree the current console interface is not very user friendly, however, when GUI will be written, there won't be any problem. Anyway, letme introduce you to the Elyssa terminology.
 
 ###Terminology
-**Object:** A real life object.It *might* have mass, energy, velocity and interact with other objects.The `Single Object Mode` deals with only one object and its properties. The `Multiple Objects Mode` relates multiple objects and compare their properties. For example, if you need to find the velocity of a car, use single object mode. But if you want this program to find the recoil velocity of a gun, you have to enable multiple object mode.
+**Object:** A real life object.It *might* have mass, energy, velocity etc, and interact with other objects.The `Single Object Mode` deals with only one object and its properties. The `Multiple Objects Mode` relates multiple objects and compare their properties. For example, if you need to find the final velocity of a car, use single object mode. But to find the recoil velocity of a gun from the momentum of the bullet fired, you have to enable multiple object mode.
 
 **Knowns:** The problem statement specified quantities. In other words, their values are generously supplied by the problem statement.
+
 **Unknown:** The quantity to be determined.
 
 Consider the following problem: *A car accelerates steadily from rest at 4 m/s^2 for 3s. What is its final velocity?*
