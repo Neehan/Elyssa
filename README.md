@@ -19,15 +19,23 @@ I do agree the current console interface is not very user friendly, however, whe
 Consider the following problem: *A car accelerates steadily from rest at 4 m/s^2 for 3s. What is its final velocity?*
 Here `u=0`, `a=4m/s^2` and `t=3s` are the **knowns** and `v` is the **unknown**.
 
+**e Notation:** A widely used notation for scientific numbers. Here is the rule. `ax10^b` is written as `aeb`. If you are still confused, please look at the following two examples:
+
+`N=6.02x10^23=6.02e23`
+
+`G=6.67259x10^-11=6.67259e-11`
+
 ##How to Use
 After running, the program writes *(S)ingle Object   (M)ultiple Objects* on the console and expects an input from you. Press `s` or `m` to  enable `Single` or `Multiple` object mode, respectively. 
 
 ###Single Object Mode
-After pressing `s`, Elyssa will reply, *Number of knowns=* which is self-explanatory. Give her the number and she will tell you to write down the knowns one at a line. Note all the inputs must be in SI units and the format will be: 
+After pressing `s`, Elyssa will reply, *Number of knowns=* which is self-explanatory. Give her the number and she will tell you to write down the knowns one at a line. the format will be: 
 
 `Known'sName <space> = <space> NumericValue`
 
 For example, to input `a=4m/s^2`, write `a = 4`
+
+**Note: all the inputs must be in SI units. Also, to input scientific numbers, you must use e notation.**
 
 After that Elyssa will print `What to find=` and you have to write the name of the unknown.
 The very next line should be the answer. :)
