@@ -1,5 +1,5 @@
 /**
-*Parser Version 1.0 beta
+*Parser Version 1.1
 *=======================
 *Operator Support: + - * / ^ ()
 *Variable Support: 1 unknown and n knowns
@@ -31,24 +31,26 @@ string div_err(string terms);
 
 class ExpTree{
 public:
-    void ToMemory(map<string,double> knowns, string unknown);
+    void ToMemory(map<string,double> knowns, string unknown1, string unknown2="@");
     Fraction val;
     string sval;
     bool sign[2]; //isPlus and isMul
     vector<int> relative;
     int no;
 };
-void ExpTree::ToMemory(map<string,double> knowns, string unknown){
-    register int i,j,index=0,exp;
+void ExpTree::ToMemory(map<string,double> knowns, string unknown1, string unknown2){
+    register int i,j,index1=0, index2=0,exp;
     string temp,term;
     double coef=1.0;
     bool sign;
-    map<int,double> mymap;
-    map<int,double>::iterator thisit;
+    Fraction myfrac, tempfrac;
+    vector<double> myvec;
+    myvec.push_back(0);
     if(sval[0]!='+'&&sval[0]!='-') sval='+'+sval;
     while(!sval.empty()){
         coef=(sval[0]=='-') ? -1:1;
-        index=0;
+        index1=0;
+        index2=0;
         term=sval.substr(1,part(sval,0,1)-1);
         while(!term.empty()){
             sign=(term[0]=='/') ? 0:1;
@@ -57,12 +59,14 @@ void ExpTree::ToMemory(map<string,double> knowns, string unknown){
             j=temp.find('^');
             if(j==string::npos){
                 if(sign==1){
-                    if(temp==unknown) index++;
+                    if(temp==unknown1) index1++;
+                    else if(temp==unknown2) index2++;
                     else if(knowns.find(temp)!=knowns.end())coef*=knowns[temp];
                     else coef*=atof(temp.c_str());
                 }
                 else{
-                    if(temp==unknown) index--;
+                    if(temp==unknown1) index1--;
+                    else if(temp==unknown2) index2--;
                     else if(knowns.find(temp)!=knowns.end())coef/=knowns[temp];
                     else coef/=atof(temp.c_str());
                 }
@@ -71,35 +75,67 @@ void ExpTree::ToMemory(map<string,double> knowns, string unknown){
                 exp=atoi(temp.substr(j+1,temp.length()-j-1).c_str());
                 temp=temp.substr(0,j);
                 if(sign==1){
-                    if(temp==unknown) index+=exp;
+                    if(temp==unknown1) index1+=exp;
+                    else if(temp==unknown2) index2+=exp;
                     else if(knowns.find(temp)!=knowns.end()) coef*=pow(knowns[temp],exp);
                     else coef*=pow(atof(temp.c_str()),exp);
                 }
                 else{
-                    if(temp==unknown) index-=exp;
+                    if(temp==unknown1) index1-=exp;
+                    else if(temp==unknown2) index2-=exp;
                     else if(knowns.find(temp)!=knowns.end()) coef/=pow(knowns[temp],exp);
                     else coef/=pow(atof(temp.c_str()),exp);
                 }
             }
             term=term.substr(i,term.length()-i);
         }
-        mymap[index]+=coef;
+        if(index1>-1&&index2>-1){
+            tempfrac.nume.coef.clear();
+            tempfrac.denom.coef.clear();
+            tempfrac.denom.coef.push_back(myvec);
+            tempfrac.denom.coef[0][0]=1;
+            tempfrac.nume.coef.resize(index1+1,myvec);
+            tempfrac.nume.coef[index1].resize(index2+1,0);
+            tempfrac.nume.coef[index1][index2]=coef;
+            myfrac=myfrac+tempfrac;
+        }
+        else if(index1>-1&&index2<0){
+            index2*=-1;
+            tempfrac.nume.coef.clear();
+            tempfrac.denom.coef.clear();
+            tempfrac.denom.coef.push_back(myvec);
+            tempfrac.denom.coef[0].resize(index2+1,0.0);
+            tempfrac.denom.coef[0][index2]=1;
+            tempfrac.nume.coef.resize(index1+1,myvec);
+            tempfrac.nume.coef[index1][0]=coef;
+            myfrac=myfrac+tempfrac;
+        }
+        else if(index1<0&&index2>-1){
+            index1*=-1;
+            tempfrac.nume.coef.clear();
+            tempfrac.denom.coef.clear();
+            tempfrac.denom.coef.resize(index1+1,myvec);
+            tempfrac.denom.coef[index1][0]=1;
+            tempfrac.nume.coef.push_back(myvec);
+            tempfrac.nume.coef[0].resize(index2+1,0);
+            tempfrac.nume.coef[0][index2]=coef;
+            myfrac=myfrac+tempfrac;
+        }
+        else{
+            index1*=-1;
+            index2*=-1;
+            tempfrac.nume.coef.clear();
+            tempfrac.denom.coef.clear();
+            tempfrac.nume.coef.push_back(myvec);
+            tempfrac.nume.coef[0][0]=coef;
+            tempfrac.denom.coef.resize(index1+1,myvec);
+            tempfrac.denom.coef[index1].resize(index2+1,0);
+            tempfrac.denom.coef[index1][index2]=1;
+            myfrac=myfrac+tempfrac;
+        }
         sval=sval.substr(part(sval,0,1),sval.length()-part(sval,0,1)+1);
     }
-    index=mymap.begin()->first;
-    if(index >-1){
-        index=mymap.rbegin()->first;
-        val.nume.coef.resize(index+1,0);
-        for(thisit=mymap.begin();thisit!=mymap.end();thisit++)val.nume.coef[thisit->first]+=thisit->second;
-    }
-    else{
-        index*=(-1);
-        val.nume.coef.resize((mymap.rbegin()->first)+index+1,0);
-        val.denom.coef[0]=0;
-        val.denom.coef.resize(index+1,0);
-        val.denom.coef[val.denom.coef.size()-1]=1;
-        for(thisit=mymap.begin();thisit!=mymap.end();thisit++)val.nume.coef[(thisit->first)+index]+=(thisit->second);
-    }
+    val=myfrac;
 }
 
 int match(string temp, int index){
@@ -189,7 +225,7 @@ string div_err(string terms){
     return terms;
 }
 
-vector<ExpTree> ToTree(string terms,map<string,double> knowns, string unknown){
+vector<ExpTree> ToTree(string terms,map<string,double> knowns, string unknown1,string unknown2="@"){
     register int i,j,k,l;
     stack<ExpTree> container;
     vector<ExpTree> mytree;
@@ -270,7 +306,7 @@ vector<ExpTree> ToTree(string terms,map<string,double> knowns, string unknown){
             if(mytree[var.no].sval.find('(') != string::npos) container.push(mytree[var.no]);
         }
     }
-    for(i=0;i<mytree.size();i++) mytree[i].ToMemory(knowns,unknown);
+    for(i=0;i<mytree.size();i++) mytree[i].ToMemory(knowns,unknown1,unknown2);
     return mytree;
 }
 ExpTree ReduceNode(vector<ExpTree> mytree){
@@ -299,7 +335,7 @@ ExpTree ReduceNode(vector<ExpTree> mytree){
     }
     return mytree[0];
 }
-Fraction parse(string terms, map<string,double> knowns, string unknown){
+Fraction parse(string terms, map<string,double> knowns, string unknown1, string unknown2="@"){
     string temp,pemp="1";
     register int i=terms.find(")^"),j,k,l,m,exp;
     terms=(terms[0]=='-'||terms[0]=='+')?terms:('+'+terms);
@@ -400,6 +436,6 @@ Fraction parse(string terms, map<string,double> knowns, string unknown){
         pemp="(+"+pemp+")";
     terms=(exp!=string::npos)?terms.substr(0,k)+temp+'/'+pemp+terms.substr(l+1,terms.length()-l-1): terms;
     }**/
-    ExpTree mytree=ReduceNode(ToTree(terms,knowns,unknown));
+    ExpTree mytree=ReduceNode(ToTree(terms,knowns,unknown1,unknown2));
     return mytree.val;
 }
