@@ -118,7 +118,7 @@ When you have written everything correctly, Elyssa will ask `What to find=`. Tel
 ####Output
 ```
 -1000
-*(N)ew (Q)uit*
+(N)ew (Q)uit
 ```
 ##The Author
 Elyssa is designed, developed and maintained by Adib Hasan (Neehan).
