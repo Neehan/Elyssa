@@ -21,9 +21,10 @@ Here `u=0`, `a=4m/s^2` and `t=3s` are the **knowns** and `v` is the **unknown**.
 
 **e Notation:** A widely used notation for scientific numbers. Here is the rule. `ax10^b` is written as `aeb`. If you are still confused, please look at the following two examples:
 
-`N=6.02x10^23=6.02e23`
-
-`G=6.67259x10^-11=6.67259e-11`
+```
+N=6.02x10^23=6.02e23
+G=6.67259x10^-11=6.67259e-11
+```
 
 ##How to Use
 After running, the program writes *(S)ingle Object   (M)ultiple Objects* on the console and expects an input from you. Press `s` or `m` to  enable `Single` or `Multiple` object mode, respectively. 
@@ -54,17 +55,18 @@ Problem: *A car accelerates steadily from rest at 4 m/s^2 for 3s. What is its fi
 
 *Write them one at a line*
 
-`u = 0`
-
-`a = 4`
-
-`t = 3`
+```
+u = 0
+a = 4
+t = 3
+```
 
 *What to find=* `v`
 ####Output
-`12`
-
-`(N)ew    (Q)uit`
+```
+12
+(N)ew    (Q)uit
+```
 
 If you press `n`, Elyssa will be ready for the next problem. And if you press `q`, the program will be terminated.
 ###Multiple Object Mode
@@ -97,17 +99,18 @@ When you have written everything correctly, Elyssa will ask `What to find=`. Tel
 
 *Write them one at a line*
 
-`m1 = 0.01`
-
-`u1 = 0`
+```
+m1 = 0.01
+u1 = 0
+```
 
 *Number of Knowns (for the second object)*=`3`
 
-`m2 = 2`
-
-`u2 = 0`
-
-`v2 = 5`
+```
+m2 = 2
+u2 = 0
+v2 = 5
+```
 
 *Any other conditions?y/n*
 
