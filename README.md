@@ -127,6 +127,7 @@ v2 = 5
 ####Sample Problem 2
 *One edge of a 1.2m copper rod of cross-sectional area 3cm^2 is embeded in 100C boiling water. If the other edge is embeded in 10g of 0C ice, find the necessary time for the ice to melt completely. Given that the thermal conductivity of copper is 385Wm^-1K^-1 and the latent heat of fusion of ice is 336000Jkg^-1.*
 
+####Input
 *(S)ingle object	 (M)ultiple objects*
 
 `m`
@@ -166,6 +167,7 @@ m2 = 10e-3
 
 *What to find=*`t1`
 
+####Output
 ```
 349.091
 (N)ew	(Q)uit
