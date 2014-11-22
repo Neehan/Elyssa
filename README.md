@@ -7,7 +7,7 @@ Elyssa is a project to make simple program that can solve elementary physics pro
 - Full unconditional Multiple Object support
 - Partial conditional Multiple Object support (One condition currently)
 
-I do agree the current console interface is not very user friendly, however, when GUI will be written, there won't be any problem. Anyway, letme introduce you to the Elyssa terminology.
+I do agree the current console interface is not very user friendly, however, when GUI will be written, there won't be any problem. Anyway, let me introduce you to the Elyssa terminology.
 
 ##Terminology
 **Object:** A real life object.It *might* have mass, energy, velocity etc, and interact with other objects.The `Single Object Mode` deals with only one object and its properties. The `Multiple Objects Mode` relates multiple objects and compare their properties. For example, if you need to find the final velocity of a car, use single object mode. But to find the recoil velocity of a gun from the momentum of the bullet fired, you have to enable multiple object mode.
@@ -116,8 +116,10 @@ When you have written everything correctly, Elyssa will ask `What to find=`. Tel
 *What to find=* `v1`
 
 ####Output
-*-1000*
-
-
-
+```
+-1000
 *(N)ew (Q)uit*
+```
+##The Author
+Elyssa is designed, developed and maintained by Adib Hasan (Neehan).
+[Contact with the developer](www.facebook.com/phlembac.hidden)
