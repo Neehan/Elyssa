@@ -122,4 +122,5 @@ When you have written everything correctly, Elyssa will ask `What to find=`. Tel
 ```
 ##The Author
 Elyssa is designed, developed and maintained by Adib Hasan (Neehan).
-[Contact with the developer](www.facebook.com/phlembac.hidden)
+
+[Contact with the developer](http://www.facebook.com/phlembac.hidden)
