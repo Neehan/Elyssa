@@ -115,8 +115,7 @@ int main()
         string val1,val2;
         vector<Equation> myeq;
         Equation a;
-        cout << "\nNumber of knowns=";
-        ifstream fin("parser.ini");
+        cout << "Number of knowns=";
         cin >> temp;
         cout << "Write them one at a line\n";
         for(i=0;i<temp;i++){
@@ -164,6 +163,11 @@ int main()
             }
             j=temp;
             if(counter==1){
+/**
+u = 0
+a = 10
+s = 125
+**/
                 nval=solve(myeq[i].lhs,myeq[i].rhs,knowns,myeq[i].val[j]);
                 knowns[myeq[i].val[j]]=nval;
                 pemp=myeq[i].val[j].substr(0,3);
@@ -403,6 +407,54 @@ t1
                 else i++;
             }
         }
+        /**
+        else if(NumOfCondition==2){
+            i=0;**/
+            /**Each pair of variables of a certain system must be present in at least one equation of eq.txt**/
+            /**pemp=alge[0].val[0].substr(0,alge[0].val[0].length()-1);
+            hmm=alge[1].val[0].substr(0,alge[1].val[0].length()-1);
+            while(i<myeq.size()){
+                int counter=0;
+                dfltind.clear();
+                for(j=0;j<myeq[i].val.size();j++){
+                    if(knowns1.find(myeq[i].val[j])==knowns1.end()&&(myeq[i].val[j]==pemp||myeq[i].val[j]==hmm)){
+                        counter++;
+                    }
+                }
+                if(counter==2){
+                    temp=i;
+                    break;
+                }
+                else i++;
+            }
+            i=0;
+            val1=alge[0].val[1].substr(0,alge[0].val[0].length()-1);
+            val2=alge[1].val[1].substr(0,alge[1].val[0].length()-1);
+            while(i<myeq.size()){
+                int counter=0;
+                dfltind.clear();
+                for(j=0;j<myeq[i].val.size();j++){
+                    if(knowns2.find(myeq[i].val[j])==knowns2.end()&&(myeq[i].val[j]==val1||myeq[i].val[j]==val2)){
+                        counter++;
+                    }
+                }
+                if(counter==2){
+                    nval=i;
+                    break;
+                }
+                else i++;
+            }
+            double indice[4];
+            indice=solve(myeq[temp],myeq[nval],alge[0],alge[1],knowns1, knowns2,pemp,hmm,val1,val2);
+            pemp+="1";
+            hmm+="1";
+            val1+="2";
+            val2+="2";
+            knowns3[pemp]=indice[0];
+            knowns3[hmm]=indice[1];
+            knowns3[val1]=indice[2];
+            knowns3[val2]=indice[3];
+        }**/
         for(myit=knowns3.begin();myit!=knowns3.end();myit++){
             pemp=myit->first;
             if(pemp[pemp.length()-1]=='1'){
