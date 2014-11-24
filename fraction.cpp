@@ -15,7 +15,7 @@ class Expression{
 public:
     vector<vector<double>> coef;
     //Expression();
-    //double eval(double x);
+    double eval(double x,double y=1);
     void show(string unknown1, string unknown2="@");
     Expression optimize();
     Expression operator+(Expression obj2);
@@ -23,6 +23,13 @@ public:
     Expression operator*(Expression obj2);
     Expression operator=(Expression obj2);
 };
+double Expression::eval(double x, double y){
+    double val=0;
+    for(int i=0;i<coef.size();i++)for(int j=0;j<coef[i].size();j++){
+        val+=coef[i][j]*pow(x,i)*pow(y,j);
+    }
+    return val;
+}
 void Expression::show(string unknown1,string unknown2){
     register int j,i=coef.size()-1;
     cout << endl;
@@ -159,6 +166,7 @@ class Fraction{
 public:
     Expression nume,denom;
     Fraction();
+    double eval(double x,double y=1);
     void resize();
     Fraction substitute(int varno, Fraction obj2);//coef is [x][y] and this is for x
     Fraction operator+(Fraction obj2);
@@ -174,6 +182,9 @@ Fraction::Fraction(){
     nume.coef.push_back(myvec);
     myvec[0]=1;
     denom.coef.push_back(myvec);
+}
+double Fraction::eval(double x,double y){
+    return (nume.eval(x,y)/denom.eval(x,y));
 }
 Fraction Fraction::substitute(int varno, Fraction obj2){
     Fraction temp,result1,result2;
@@ -229,7 +240,7 @@ void Fraction::resize(){
     register int i=nume.coef.size()-1,j;
     for(;i>-1;i--){
         j=nume.coef[i].size()-1;
-        while(CompareDoubles(nume.coef[i][j],0)) j--;
+        while(j>-1&&CompareDoubles(nume.coef[i][j],0)) j--;
         nume.coef[i].resize(j+1);
     }
     i=nume.coef.size()-1;
@@ -238,12 +249,14 @@ void Fraction::resize(){
     i=denom.coef.size()-1;
     for(;i>-1;i--){
         j=denom.coef[i].size()-1;
-        while(CompareDoubles(denom.coef[i][j],0)) j--;
+        while(j>-1&&CompareDoubles(denom.coef[i][j],0)) j--;
         denom.coef[i].resize(j+1);
     }
     i=denom.coef.size()-1;
     while(denom.coef[i].empty())i--;
     denom.coef.resize(i+1);
+    for(i=0;i<nume.coef.size();i++)if(nume.coef[i].size()==0)nume.coef[i].push_back(0);
+    for(i=0;i<denom.coef.size();i++)if(denom.coef[i].size()==0)denom.coef[i].push_back(0);
 }
 Fraction Fraction::operator+(Fraction obj2){
     Fraction temp;
