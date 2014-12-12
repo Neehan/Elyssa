@@ -1,13 +1,13 @@
 /**
-*Parser Version 1.1
+*Parser Version 2.1
 *=======================
 *Operator Support: + - * / ^ ()
-*Variable Support: 1 unknown and n knowns
+*Variable Support: 2 unknowns and n knowns
 *
 *Note
 *====
-*I haven't included any error handling function, so calling any undefined variable or using extra parenthesis will result to runtime
-*errors.
+*I haven't included any error handling function, so calling any undefined variable or using extra
+*parenthesis will result in runtime errors.
 **/
 #include <iostream>
 #include <fstream>
@@ -416,26 +416,6 @@ Fraction parse(string terms, map<string,double> knowns, string unknown1, string 
         }
         i=terms.find(")^");
     }
-    /**i=terms.find("/(");
-    k=i+1;
-    l=part(terms,i,1);
-    pemp="1";
-    for(i=0;i<terms.length();i=part(terms,i,1)){
-        k=i+1;
-        l=part(terms,i,1)-1;
-        temp=terms.substr(k,l-k+1);
-        m=temp.find("/(");
-        exp=m;
-        pemp="1";
-        while(m!=string::npos){
-            j=match(temp,m+1);
-            pemp+=('*'+temp.substr(m+1,j-m));
-            temp=temp.substr(0,m)+temp.substr(j+1,temp.length()-j);
-            m=temp.find("/(");
-        }
-        pemp="(+"+pemp+")";
-    terms=(exp!=string::npos)?terms.substr(0,k)+temp+'/'+pemp+terms.substr(l+1,terms.length()-l-1): terms;
-    }**/
     ExpTree mytree=ReduceNode(ToTree(terms,knowns,unknown1,unknown2));
     return mytree.val;
 }
