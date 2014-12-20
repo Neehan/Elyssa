@@ -1,3 +1,5 @@
+#ifndef FRACTION_H
+#define FRACTION_H
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -301,3 +303,4 @@ Fraction Fraction::operator=(Fraction obj2){
     denom=obj2.denom;
     return *this;
 }
+#endif
