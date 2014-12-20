@@ -19,11 +19,6 @@ using namespace std;
 #define PI 3.1415927
 
 map<string,double> knowns1,knowns2,knowns3;
-struct Equation{
-    string lhs,rhs;
-    vector<string> val;
-    int prec;
-};
 
 void trig(string mystr, double nval, int no){
     string pemp=mystr.substr(0,3);
@@ -282,23 +277,6 @@ s = 125
             knowns[pemp]=nval;
             i++;
         }**/
-
-        /**
-m
-4
-d1 = 1.2
-A1 = 3e-4
-delta_Theta1 = 100
-K1 = 385
-3
-l_f2 = 336000
-m2 = 10e-3
-/fusion2 = 0
-y
-1
-Q1 = delta_Q2 Q1 delta_Q2
-t1
-        **/
         ifstream rin("eq.txt");
         while(rin >> a.lhs){
             a.val.clear();
@@ -407,45 +385,41 @@ t1
                 else i++;
             }
         }
-        /**
         else if(NumOfCondition==2){
-            i=0;**/
+            i=0;
             /**Each pair of variables of a certain system must be present in at least one equation of eq.txt**/
-            /**pemp=alge[0].val[0].substr(0,alge[0].val[0].length()-1);
+            pemp=alge[0].val[0].substr(0,alge[0].val[0].length()-1);
             hmm=alge[1].val[0].substr(0,alge[1].val[0].length()-1);
+            val1=alge[0].val[1].substr(0,alge[0].val[0].length()-1);
+            val2=alge[1].val[1].substr(0,alge[1].val[0].length()-1);
             while(i<myeq.size()){
-                int counter=0;
+                int counter1=0,couter2=0;
                 dfltind.clear();
                 for(j=0;j<myeq[i].val.size();j++){
-                    if(knowns1.find(myeq[i].val[j])==knowns1.end()&&(myeq[i].val[j]==pemp||myeq[i].val[j]==hmm)){
-                        counter++;
-                    }
+                    if(myeq[i].val[j]==val1||myeq[i].val[j]==val2) counter1++;
+                    if(knowns1.find(myeq[i].val[j])==knowns1.end()) couter2++;
                 }
-                if(counter==2){
+                if(counter1==2&&couter2==2){
                     temp=i;
                     break;
                 }
                 else i++;
             }
             i=0;
-            val1=alge[0].val[1].substr(0,alge[0].val[0].length()-1);
-            val2=alge[1].val[1].substr(0,alge[1].val[0].length()-1);
             while(i<myeq.size()){
-                int counter=0;
+                int counter1=0,couter2=0;
                 dfltind.clear();
                 for(j=0;j<myeq[i].val.size();j++){
-                    if(knowns2.find(myeq[i].val[j])==knowns2.end()&&(myeq[i].val[j]==val1||myeq[i].val[j]==val2)){
-                        counter++;
-                    }
+                    if(myeq[i].val[j]==val1||myeq[i].val[j]==val2) counter1++;
+                    if(knowns2.find(myeq[i].val[j])==knowns2.end()) couter2++;
                 }
-                if(counter==2){
+                if(counter1==2&&couter2==2){
                     nval=i;
                     break;
                 }
                 else i++;
             }
-            double indice[4];
-            indice=solve(myeq[temp],myeq[nval],alge[0],alge[1],knowns1, knowns2,pemp,hmm,val1,val2);
+            vector<double> indice=SOLVE(myeq[temp],myeq[nval],alge[0],alge[1],knowns1, knowns2,pemp,hmm,val1,val2);
             pemp+="1";
             hmm+="1";
             val1+="2";
@@ -454,7 +428,7 @@ t1
             knowns3[hmm]=indice[1];
             knowns3[val1]=indice[2];
             knowns3[val2]=indice[3];
-        }**/
+        }
         for(myit=knowns3.begin();myit!=knowns3.end();myit++){
             pemp=myit->first;
             if(pemp[pemp.length()-1]=='1'){
@@ -521,3 +495,16 @@ t1
     if(b=='n'||b=='N') goto xx;
     else return 0;
 }
+/**
+m
+2
+m1 = 0.1
+Sh1 = 4200
+2
+m2 = 0.2
+Sh2 = 4200
+y
+2
+Q = Q Q1 Q2
+delta_Theta = 60-delta_Theta delta_Theta1 delta_Theta2
+delta_Theta1**/
