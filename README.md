@@ -1,6 +1,6 @@
 Elyssa version 1.5
 ==================
-Elyssa is a project to make simple program that can solve elementary physics problems.
+Elyssa is a project to make a simple program that can solve (almost) any elementary physics problem.
 
 ##Features
 - Full Single Object support
@@ -172,6 +172,8 @@ m2 = 10e-3
 349.091
 (N)ew	(Q)uit
 ```
+##License
+Elyssa is published under GPL version 3. See the `LICENSE` for details.
 ##The Author
 Elyssa is designed, developed and maintained by Adib Hasan (Neehan).
 
