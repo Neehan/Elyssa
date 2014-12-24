@@ -150,7 +150,7 @@ K1 = 385
 ````
 l_f2 = 336000
 m2 = 10e-3
-/fusion2 = 0
+/fusion2 = 1
 `````
 
 *Any other conditions?y/n*
