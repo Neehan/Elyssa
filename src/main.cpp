@@ -9,9 +9,9 @@
 #include <cmath>
 #include <cstdlib>
 #include "etc.cpp"
-#include "include/fraction.h"
-#include "include/parser.h"
-#include "include/eqsolver.h"
+#include "../include/fraction.h"
+#include "../include/parser.h"
+#include "../include/eqsolver.h"
 #include "error_handler.cpp"
 
 using namespace std;
@@ -100,7 +100,7 @@ int main()
     char b;
     register int i,j,temp,k=0,prec=-1;
     double nval,mval;
-    ifstream fin("config/con-eq.ini");
+    ifstream fin("../config/con-eq.ini");
     cout << "(S)ingle object\t (M)ultiple objects\n";
     cin >> b;
     if(b=='s'||b=='S'){
@@ -135,7 +135,7 @@ int main()
             knowns[pemp]=nval;
             i++;
         }**/
-        ifstream rin("config/eq.ini");
+        ifstream rin("../config/eq.ini");
         while(rin >> a.lhs){
             a.val.clear();
             rin >> pemp >> a.rhs >> temp;
@@ -158,11 +158,6 @@ int main()
             }
             j=temp;
             if(counter==1){
-/**
-u = 0
-a = 10
-s = 125
-**/
                 nval=solve(myeq[i].lhs,myeq[i].rhs,knowns,myeq[i].val[j]);
                 knowns[myeq[i].val[j]]=nval;
                 pemp=myeq[i].val[j].substr(0,3);
@@ -277,7 +272,7 @@ s = 125
             knowns[pemp]=nval;
             i++;
         }**/
-        ifstream rin("config/eq.ini");
+        ifstream rin("../config/eq.ini");
         while(rin >> a.lhs){
             a.val.clear();
             rin >> pemp >> a.rhs >> temp;
@@ -287,7 +282,7 @@ s = 125
             }
             myeq.push_back(a);
         }
-        ifstream zin("config/con-eq.ini");
+        ifstream zin("../config/con-eq.ini");
         while(zin >> a.lhs){
             a.val.clear();
             zin >> pemp >> a.rhs >> temp;
@@ -495,16 +490,3 @@ s = 125
     if(b=='n'||b=='N') goto xx;
     else return 0;
 }
-/**
-m
-2
-m1 = 0.1
-Sh1 = 4200
-2
-m2 = 0.2
-Sh2 = 4200
-y
-2
-Q = Q Q1 Q2
-delta_Theta = 60-delta_Theta delta_Theta1 delta_Theta2
-delta_Theta1**/
