@@ -1,4 +1,4 @@
-Elyssa version 1.5
+Elyssa version 2.0
 ==================
 Elyssa is a project to make a simple program that can solve (almost) any elementary physics problem.
 
