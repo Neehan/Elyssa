@@ -10,7 +10,7 @@ Elyssa is a project to make a simple program that can solve (almost) any element
 I do agree the current console interface is not very user friendly, however, when GUI will be written, there won't be any problem. Anyway, let me introduce you to the Elyssa terminology.
 
 ##How to install
-[Download the latest release](http://www.github.com/Neehan/Elyssa/releases) and unzip it. Open `elyssax.x.windows.exe` (for windows) or `elyssax.x.ubuntu` (for ubuntu). 
+[Download the latest release](http://www.github.com/Neehan/Elyssa/releases) and unzip it. Open `elyssax.x.windows.exe` (for windows) or `elyssax.x.ubuntu` (for ubuntu). You are done.
 
 ##Terminology
 **Object:** A real life object.It *might* have mass, energy, velocity etc, and interact with other objects.The `Single Object Mode` deals with only one object and its properties. The `Multiple Objects Mode` relates multiple objects and compare their properties. For example, if you need to find the final velocity of a car, use single object mode. But to find the recoil velocity of a gun from the momentum of the bullet fired, you have to enable multiple object mode.
