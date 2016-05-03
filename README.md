@@ -178,6 +178,5 @@ m2 = 10e-3
 ##License
 Elyssa is published under GPL version 3. See the `LICENSE` for details.
 ##The Author
-Elyssa is designed, developed and maintained by Adib Hasan (Neehan).
+Elyssa is designed, developed and maintained by [Neehan](https://www.facebook.com/phlembac.hidden)
 
-[Contact with the developer](http://www.facebook.com/phlembac.hidden)
