@@ -2,17 +2,17 @@ Elyssa version 2.0
 ==================
 Elyssa is a project to make a simple program that can solve (almost) any elementary physics problem.
 
-##Features
+## Features
 - Full Single Object support
 - Full unconditional Multiple Object support
 - Partial conditional Multiple Object support (One condition currently)
 
 I do agree the current console interface is not very user friendly, however, when GUI will be written, there won't be any problem.
 
-##How to install
+## How to install
 [Download the latest release](http://www.github.com/Neehan/Elyssa/releases) and unzip it. Open `elyssax.x.windows.exe` (for windows) or `elyssax.x.ubuntu` (for ubuntu). You are done. Anyway, let me introduce you to the Elyssa terminology.
 
-##Terminology
+## Terminology
 **Object:** A real life object.It *might* have mass, energy, velocity etc, and interact with other objects.The `Single Object Mode` deals with only one object and its properties. The `Multiple Objects Mode` relates multiple objects and compare their properties. For example, if you need to find the final velocity of a car, use single object mode. But to find the recoil velocity of a gun from the momentum of the bullet fired, you have to enable multiple object mode.
 
 **Knowns:** The problem statement specified quantities. In other words, their values are generously supplied by the problem statement.
@@ -29,10 +29,10 @@ N=6.02x10^23=6.02e23
 G=6.67259x10^-11=6.67259e-11
 ```
 
-##How to Use
+## How to Use
 After running, the program writes *(S)ingle Object   (M)ultiple Objects* on the console and expects an input from you. Press `s` or `m` to  enable `Single` or `Multiple` object mode, respectively. 
 
-###Single Object Mode
+### Single Object Mode
 After pressing `s`, Elyssa will reply, *Number of knowns=* which is self-explanatory. Give her the number and she will tell you to write down the knowns one at a line. the format will be: 
 
 `Known'sName <space> = <space> NumericValue`
@@ -44,12 +44,12 @@ For example, to input `a=4m/s^2`, write `a = 4`
 After that Elyssa will print `What to find=` and you have to write the name of the unknown.
 The very next line should be the answer. :)
 
-###Sample Problem
+### Sample Problem
 Let's solve the previous problem with Elyssa.
 
 Problem: *A car accelerates steadily from rest at 4 m/s^2 for 3s. What is its final velocity?*
 
-####Input
+#### Input
 *(S)ingle Object   (M)ultiple Object*
 
 `s`
@@ -72,7 +72,8 @@ t = 3
 ```
 
 If you press `n`, Elyssa will be ready for the next problem. And if you press `q`, the program will be terminated.
-###Multiple Object Mode
+
+### Multiple Object Mode
 This time Elyssa will reply, *Number of knowns(for the first object)=* and you have to write the number. And like before, Elyssa will say, `Write them one at a line`. Writing rules are same as previous, but this time you have to write the knowns with a suffixing `1` ie, for mass, write `m1` instead of `m`. 
 
 Similarly write the knowns for the second object, with `2` as suffix.
@@ -90,10 +91,10 @@ If you press `y`, Elyssa will ask for the number of such conditions. **Current v
 `v1-v2 = 2 v1 v2` //But this is  not. 
 
 When you have written everything correctly, Elyssa will ask `What to find=`. Tell her the quantity's name. The following line should be the result.
-####Sample Problem 1
+#### Sample Problem 1
 *A 10g bullet is fired from a gun. If the recoil velocity is 5m/s and the mass of the gun is 2kg, find the velocity of the bullet.*
 
-####Input
+#### Input
 *(S)ingle Object  (M)ultiple Object*
 
 `m`
@@ -130,7 +131,7 @@ v2 = 5
 ####Sample Problem 2
 *One edge of a 1.2m copper rod of cross-sectional area 3cm^2 is embeded in 100C boiling water. If the other edge is embeded in 10g of 0C ice, find the necessary time for the ice to melt completely. Given that the thermal conductivity of copper is 385Wm^-1K^-1 and the latent heat of fusion of ice is 336000Jkg^-1.*
 
-####Input
+#### Input
 *(S)ingle object	 (M)ultiple objects*
 
 `m`
@@ -175,8 +176,8 @@ m2 = 10e-3
 349.091
 (N)ew	(Q)uit
 ```
-##License
+## License
 Elyssa is published under GPL version 3. See the `LICENSE` for details.
-##The Author
+## The Author
 Elyssa is designed, developed and maintained by [Neehan](https://www.facebook.com/phlembac.hidden)
 
